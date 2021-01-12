@@ -1,22 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
+import { Translation } from 'react-i18next'
 
 function App() {
+
+  const changeLanguage = code => e => {
+    localStorage.setItem('language', code)
+    window.location.reload() 
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        
+        <Translation>
+          {(t) => <p>{t('sample.title')}</p>}
+        </Translation>
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center'
+          }}
         >
-          Learn React
-        </a>
+          <button onClick={changeLanguage('en')}>
+            EN
+          </button>
+          <button onClick={changeLanguage('mm')}>
+            MM
+          </button>
+        </div>
       </header>
     </div>
   );

@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import './language'
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <React.Suspense fallback={<p>Loading ...</p>}>
+    <App useSuspense={true} />
+  </React.Suspense>,
   document.getElementById('root')
 );
 
